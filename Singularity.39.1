@@ -1,17 +1,17 @@
 ####################################
-# Singularity recipe for openMalaria version 35
+# Singularity recipe for openMalaria version 39.1
 #
 ####################################
 
 Bootstrap: docker
-From: centos:7
+From: fedora:latest
 
 %post
 
-   export OPENMALARIA_VERSION="39.0"
+   export OPENMALARIA_VERSION="39.1"
 
    # install the OpenMalaria dependencies
-   yum -y install epel-release
+   # yum -y install epel-release
    yum -y install \
    boost-devel \
    cmake \
@@ -22,7 +22,8 @@ From: centos:7
    wget \
    xerces-c-devel \
    xsd \
-   zlib-devel
+   zlib-devel \
+   python2
    yum clean all
 
    # download the source code and compile it
